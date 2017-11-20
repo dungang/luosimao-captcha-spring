@@ -12,7 +12,10 @@ import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.CompositionType;
+import org.hibernate.validator.constraints.ConstraintComposition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
+@ConstraintComposition(CompositionType.AND)
+@NotNull
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PARAMETER, ElementType.FIELD})
@@ -45,7 +49,9 @@ public @interface LuosimaoCaptcha {
 		@Autowired
 		private LuosimaoProperties properties;
 		
+		
 		public void initialize(LuosimaoCaptcha annotation) {
+			messages = new HashMap<String, String>();
 			messages.put("-10", "API KEY 为空");
 			messages.put("-11", "response为空");
 			messages.put("-2x", "response错误");
@@ -53,6 +59,9 @@ public @interface LuosimaoCaptcha {
 		}
 
 		public boolean isValid(String luotestResponse, ConstraintValidatorContext context) {
+			if(null == luotestResponse || luotestResponse.equals("")) {
+				return false;
+			}
 			Map<String, String> params = new HashMap<String, String>();
 			params.put("response", luotestResponse);
 			params.put("api_key", properties.getApiKey());

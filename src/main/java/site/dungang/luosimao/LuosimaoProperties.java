@@ -1,7 +1,9 @@
 package site.dungang.luosimao;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
+@Component
 @ConfigurationProperties("luosimao")
 public class LuosimaoProperties {
 	
