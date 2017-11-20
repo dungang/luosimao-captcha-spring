@@ -1,5 +1,14 @@
 spring luosimao captcha
 --
+> 配置 applicaiton.yml
+
+```
+luosimao:
+	gateway: https://captcha.luosimao.com/api/site_verify
+	api-key: apikey
+	site-key: sitekey
+	
+```
 
 > 后端代码
 
@@ -15,7 +24,7 @@ public class Model {
 > 前端代码
 
 ```
-<div data-site-key="" data-width="300" class="l-captcha" ></div>
+<div data-site-key="sitekey" data-width="300" class="l-captcha" ></div>
 
 <script>
 var c = document.createElement('script');c.type = 'text/javascript';c.async = true;
