@@ -1,4 +1,4 @@
-package site.dungang.lusoimao;
+package site.dungang.luosimao;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -24,8 +24,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PARAMETER, ElementType.FIELD})
-@Constraint(validatedBy=LusimaoCaptcha.ValidateLusoimaoCaptcha.class)
-public @interface LusimaoCaptcha {
+@Constraint(validatedBy=LuosimaoCaptcha.ValidateLusoimaoCaptcha.class)
+public @interface LuosimaoCaptcha {
 	
 	String message() default "验证码无效!";
 	
@@ -33,7 +33,7 @@ public @interface LusimaoCaptcha {
     
     Class<? extends Payload>[] payload() default{};
     
-	class ValidateLusoimaoCaptcha implements ConstraintValidator<LusimaoCaptcha, String>  {
+	class ValidateLusoimaoCaptcha implements ConstraintValidator<LuosimaoCaptcha, String>  {
 
 		private static Logger logger = LoggerFactory.getLogger(ValidateLusoimaoCaptcha.class);
 				
@@ -45,7 +45,7 @@ public @interface LusimaoCaptcha {
 		@Autowired
 		private LuosimaoProperties properties;
 		
-		public void initialize(LusimaoCaptcha annotation) {
+		public void initialize(LuosimaoCaptcha annotation) {
 			messages.put("-10", "API KEY 为空");
 			messages.put("-11", "response为空");
 			messages.put("-2x", "response错误");

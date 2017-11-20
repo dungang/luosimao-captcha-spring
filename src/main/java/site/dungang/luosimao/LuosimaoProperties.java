@@ -1,4 +1,4 @@
-package site.dungang.lusoimao;
+package site.dungang.luosimao;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

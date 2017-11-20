@@ -1,4 +1,4 @@
-package site.dungang.lusoimao;
+package site.dungang.luosimao;
 
 import java.io.File;
 import java.io.IOException;
