@@ -36,6 +36,8 @@ public class Model {
 
 ```
 <div data-site-key="sitekey" data-width="300" class="l-captcha" ></div>
+<!-- thymeleaf -->
+<p style="color: #FF5722" th:if="${#fields.hasErrors('luotest_response')}" th:errors="*{luotest_response}"></p>
 
 <script>
 var c = document.createElement('script');c.type = 'text/javascript';c.async = true;
