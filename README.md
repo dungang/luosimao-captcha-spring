@@ -1,5 +1,7 @@
-spring luosimao captcha
+spring boot luosimao captcha
 --
+
+基于 spring boot 封装的 luosimao人机验证码
 
 > pom.xml
 
