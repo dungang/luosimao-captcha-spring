@@ -1,5 +1,16 @@
 spring luosimao captcha
 --
+
+> pom.xml
+
+```
+	<dependency>
+		<groupId>site.dungang</groupId>
+		<artifactId>luosimao-captcha-spring</artifactId>
+		<version>0.0.1</version>
+	</dependency>
+```
+
 > 配置 applicaiton.yml
 
 ```
