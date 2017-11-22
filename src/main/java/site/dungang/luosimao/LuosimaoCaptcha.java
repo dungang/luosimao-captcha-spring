@@ -52,10 +52,11 @@ public @interface LuosimaoCaptcha {
 		
 		public void initialize(LuosimaoCaptcha annotation) {
 			messages = new HashMap<String, String>();
+			messages.put("-500", "验证码服务器挂了");
 			messages.put("-10", "API KEY 为空");
-			messages.put("-11", "response为空");
-			messages.put("-2x", "response错误");
-			messages.put("-40", "API_KEY使用错误");
+			messages.put("-11", "验证码为空");
+			messages.put("-20", "验证码验证失败");
+			messages.put("-40", "API_KEY错误 请勿把使用SITE_KEY当做API_KEY使用");
 		}
 
 		public boolean isValid(String luotestResponse, ConstraintValidatorContext context) {
@@ -71,8 +72,8 @@ public @interface LuosimaoCaptcha {
 				if(null != result && null!=result.get("res")) {
 					if(result.get("res").equals("success")) {
 						return true;
-					} else if(null != result.get("error")) {
-						String errorCode = (String) result.get("error");
+					} else if(result.get("res").equals("failed") && null != result.get("error")) {
+						String errorCode = String.valueOf(result.get("error"));
 						if(null != messages.get(errorCode)) {
 							logger.debug(messages.get(errorCode));
 						}

@@ -29,7 +29,7 @@ luosimao:
 public class Model {
 
 	@LusimaoCaptcha
-	private String luotest_response;
+	private String luotest_response; //属性的名称固定的不能修改
 	
 }
 ```
@@ -37,7 +37,7 @@ public class Model {
 > 前端代码
 
 ```
-<div data-site-key="sitekey" data-width="300" class="l-captcha" ></div>
+<div data-site-key="sitekey" data-width="270px" class="l-captcha" ></div>
 <!-- thymeleaf -->
 <p style="color: #FF5722" th:if="${#fields.hasErrors('luotest_response')}" th:errors="*{luotest_response}"></p>
 

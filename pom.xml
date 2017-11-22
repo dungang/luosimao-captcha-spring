@@ -9,6 +9,9 @@
 	<groupId>site.dungang</groupId>
 	<artifactId>luosimao-captcha-spring</artifactId>
 	<version>0.0.1</version>
+	<name>luosimao-captcha</name>
+	<description>螺丝帽验证码</description>
+	<url>https://github.com/dungang/luosimao-captcha-spring</url>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -39,4 +42,56 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<issueManagement>
+		<system>Github Issue</system>
+		<url>https://github.com/dungang/luosimao-captcha-spring/issues</url>
+	</issueManagement>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	<licenses>
+		<license>
+			<name>The MIT License (MIT)</name>
+			<url>https://mit-license.org/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<tag>0.0.1</tag>
+		<url>git@github.com:dungang/luosimao-captcha-spring.git</url>
+		<connection>scm:git:git@github.com:dungang/luosimao-captcha-spring.git</connection>
+		<developerConnection>scm:git:git@github.com:dungang/luosimao-captcha-spring.git</developerConnection>
+	</scm>
+	<developers>
+		<developer>
+			<name>dungang</name>
+			<email>dungang@126.com</email>
+		</developer>
+	</developers>
 </project>
