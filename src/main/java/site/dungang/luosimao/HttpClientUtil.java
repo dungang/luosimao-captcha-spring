@@ -34,6 +34,7 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * 
  * @author dungang
@@ -43,9 +44,7 @@ public class HttpClientUtil {
 
 	private static Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
 
-	/**
-	 * utf-8字符编码
-	 */
+	//utf-8字符编码
 	public static final String CHARSET_UTF_8 = "utf-8";
 
 	// HTTP内容类型。
@@ -54,10 +53,7 @@ public class HttpClientUtil {
 	// HTTP内容类型。相当于form表单的形式，提交数据
 	public static final String CONTENT_TYPE_FORM_URL = "application/x-www-form-urlencoded";
 
-	/**
-	 * HTTP内容类型。相当于form表单的形式，提交数据
-	 * 
-	 */
+	//HTTP内容类型。相当于form表单的形式，提交数据
 	public static final String CONTENT_TYPE_JSON_URL = "application/json;charset=utf-8";
 
 	// 连接管理器
@@ -116,12 +112,6 @@ public class HttpClientUtil {
 		return httpClient;
 	}
 
-	/**
-	 * 发送Post请求
-	 * 
-	 * @param httpPost
-	 * @return
-	 */
 	private static String sendHttpPost(HttpPost httpPost) {
 
 		CloseableHttpClient httpClient = null;
@@ -173,12 +163,7 @@ public class HttpClientUtil {
 		return responseContent;
 	}
 
-	/**
-	 * 发送Get请求
-	 * 
-	 * @param httpGet
-	 * @return
-	 */
+
 	private static String sendHttpGet(HttpGet httpGet) {
 
 		CloseableHttpClient httpClient = null;
@@ -230,39 +215,19 @@ public class HttpClientUtil {
 		return responseContent;
 	}
 
-	/**
-	 * 发送 post请求
-	 * 
-	 * @param httpUrl
-	 *            地址
-	 */
 	public static String sendHttpPost(String httpUrl) {
 		// 创建httpPost
 		HttpPost httpPost = new HttpPost(httpUrl);
 		return sendHttpPost(httpPost);
 	}
 
-	/**
-	 * 发送 get请求
-	 * 
-	 * @param httpUrl
-	 */
 	public static String sendHttpGet(String httpUrl) {
 		// 创建get请求
 		HttpGet httpGet = new HttpGet(httpUrl);
 		return sendHttpGet(httpGet);
 	}
 
-	/**
-	 * 发送 post请求（带文件）
-	 * 
-	 * @param httpUrl
-	 *            地址
-	 * @param maps
-	 *            参数
-	 * @param fileLists
-	 *            附件
-	 */
+
 	public static String sendHttpPost(String httpUrl, Map<String, String> maps, List<File> fileLists) {
 		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
 		MultipartEntityBuilder meBuilder = MultipartEntityBuilder.create();
@@ -282,15 +247,7 @@ public class HttpClientUtil {
 		return sendHttpPost(httpPost);
 	}
 
-	/**
-	 * 发送 post请求
-	 * 
-	 * @param httpUrl
-	 *            地址
-	 * @param params
-	 *            参数(格式:key1=value1&key2=value2)
-	 * 
-	 */
+
 	public static String sendHttpPost(String httpUrl, String params) {
 		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
 		try {
@@ -306,26 +263,12 @@ public class HttpClientUtil {
 		return sendHttpPost(httpPost);
 	}
 
-	/**
-	 * 发送 post请求
-	 * 
-	 * @param maps
-	 *            参数
-	 */
+
 	public static String sendHttpPost(String httpUrl, Map<String, String> maps) {
 		String parem = convertStringParamter(maps);
 		return sendHttpPost(httpUrl, parem);
 	}
 
-	/**
-	 * 发送 post请求 发送json数据
-	 * 
-	 * @param httpUrl
-	 *            地址
-	 * @param paramsJson
-	 *            参数(格式 json)
-	 * 
-	 */
 	public static String sendHttpPostJson(String httpUrl, String paramsJson) {
 		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
 		try {
@@ -341,15 +284,6 @@ public class HttpClientUtil {
 		return sendHttpPost(httpPost);
 	}
 
-	/**
-	 * 发送 post请求 发送xml数据
-	 * 
-	 * @param httpUrl
-	 *            地址
-	 * @param paramsXml
-	 *            参数(格式 Xml)
-	 * 
-	 */
 	public static String sendHttpPostXml(String httpUrl, String paramsXml) {
 		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
 		try {
@@ -365,13 +299,6 @@ public class HttpClientUtil {
 		return sendHttpPost(httpPost);
 	}
 
-	/**
-	 * 将map集合的键值对转化成：key1=value1&key2=value2 的形式
-	 * 
-	 * @param parameterMap
-	 *            需要转化的键值对集合
-	 * @return 字符串
-	 */
 	public static String convertStringParamter(Map<String, String> parameterMap) {
 		StringBuffer parameterBuffer = new StringBuffer();
 		if (parameterMap != null) {
